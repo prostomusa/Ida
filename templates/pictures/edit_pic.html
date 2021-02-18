@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пример веб-страницы</title>
+ </head>
+ <body>
+  <a href='{% url "main_page" %}'>Назад к списку</a>
+  <h1><center>{{ pic }}</center></h1>
+  <form enctype="multipart/form-data" action='{% url "edit_page" id_image=pic.id %}' method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Отправить</button>
+  </form>
+  <img src="{{pic.image.url}}" width="{{w}}" height="{{h}}">
+  {% for message in messages %}
+      <p id="messages">{{message}}</p>
+  {% endfor %}
+ </body>
+</html>

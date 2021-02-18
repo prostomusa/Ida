@@ -1,0 +1,17 @@
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пример веб-страницы</title>
+ </head>
+ <body>
+  <h1><center>Список изображений</center></h1>
+  {% if pics %}
+  	{% for p in pics %}
+  		<a href="{% url 'edit_page' id_image=p.id %}"><p>{{ p }}</p></a>
+  	{% endfor %}
+  {% else %}
+  	<p>Нет доступных изображений</p>
+  {% endif %}
+  <a href='{% url "add_picture" %}'> Добавить изображение</a>
+ </body>
+</html>
